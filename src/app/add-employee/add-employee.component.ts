@@ -22,6 +22,6 @@ export class AddEmployeeComponent implements OnInit {
    this.person = {}
   }
   updateEmployee(employee) {
-    this.person = employee
+    this.person = Object.assign({}, employee)
   }
 }

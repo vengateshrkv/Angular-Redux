@@ -14,9 +14,5 @@ export class DeleteEmployee implements Action {
     readonly type= DELETE_EMPLOYEE
     constructor(public payload: number){}
 }
-export class UpdateEmployee implements Action {
-    readonly type= UPDATE_EMPLOYEE
-    constructor(public payload: Employee){}
-}
 
-export type Actions = AddEmployee | DeleteEmployee | UpdateEmployee
+export type Actions = AddEmployee | DeleteEmployee

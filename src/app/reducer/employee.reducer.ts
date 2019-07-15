@@ -14,13 +14,18 @@ const initialState: any =  [
 export function reducer(state = initialState, action: EmployeeActions.Actions) {
     switch(action.type) {
         case EmployeeActions.ADD_EMPLOYEE:
-            return [ ...state, action.payload]
+            if(action.payload.id) {
+               let getValue =  state.findIndex(data => data.id === action.payload.id)
+               state[getValue] = action.payload;
+               return state
+            } else {
+               let getIndex = (state[state.length - 1].id) + 1
+               action.payload.id = getIndex;
+               return [ ...state, action.payload]
+            }
         case EmployeeActions.DELETE_EMPLOYEE:
             state.splice(action.payload, 1)
             return state
-        case EmployeeActions.UPDATE_EMPLOYEE:
-            console.log(action.payload)
-            return action.payload
         default:
             return state;
     }
